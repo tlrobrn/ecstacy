@@ -70,4 +70,31 @@ describe('Stack', function()
       assert.are.equal(2, stack:min())
     end)
   end)
+
+  describe(':max', function()
+    it('returns the maximum value in the stack', function()
+      local stack = Stack:new()
+      stack:push(1)
+      stack:push(2)
+      local max = stack:max()
+
+      assert.are.equal(2, max)
+    end)
+
+    it('returns nil for an empty stack', function()
+      local stack = Stack:new()
+      local max = stack:max()
+
+      assert.is_nil(max)
+    end)
+
+    it('resets min after a minimum value was popped', function()
+      local stack = Stack:new()
+      stack:push(1)
+      stack:push(2)
+      stack:pop()
+
+      assert.are.equal(1, stack:max())
+    end)
+  end)
 end)
